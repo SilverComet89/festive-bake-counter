@@ -19,7 +19,7 @@
         </section>
         <section id="counter">
             <button id="minus">-</button>
-            <span id="count">2</span>
+            <input type="number" id="count" value="2">
             <button id="plus">+</button>
         </section>
         <section id="nutrition">
@@ -74,7 +74,7 @@
                 document.cookie = `${name}=${value}; expires=${expires}; path=/`;
             }
 
-            let count = parseInt(getCookie("count"), 10);
+            let count = parseFloat(getCookie("count"));
 
             if (isNaN(count)) {
                 count = 0;
@@ -84,7 +84,7 @@
             // Optional: display the count somewhere
             function updateDisplay() {
                 const el = document.getElementById("count");
-                if (el) el.textContent = count;
+                if (el) el.value = count;
                 updateNutrition();
             }
             updateDisplay();
@@ -99,7 +99,7 @@
                 const singleProtein = 13;
                 const singleSalt = 1.7;
 
-                const count = document.getElementById("count").textContent;
+                const count = parseFloat(document.getElementById("count").value);
 
                 document.getElementById("energykj").innerHTML = (singleKj * count).toFixed(2).replace(/[.,]00$/, "") + 'kJ';
                 document.getElementById("energykcal").innerHTML = (singleKcal * count).toFixed(2).replace(/[.,]00$/, "") + 'kcal';
@@ -122,6 +122,18 @@
                 count += 1;
                 setCookie("count", count);
                 updateDisplay();
+            });
+
+            let countTimeout;
+
+            document.getElementById("count").addEventListener("input", () => {
+                clearTimeout(countTimeout);
+
+                countTimeout = setTimeout(() => {
+                    count = parseFloat(document.getElementById("count").value);
+                    setCookie("count", count);
+                    updateDisplay();
+                }, 500);
             });
         </script>
     </body>
