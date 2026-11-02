@@ -69,9 +69,13 @@ button:hover {
     cursor: pointer;
 }
 
-span#count {
+input#count {
     font-size: 8em;
     padding: 0 0.5em;
+    background: transparent;
+    text-align: center;
+    border: 0px;
+    width: 3em;
 }
 
 section#nutrition {
@@ -104,4 +108,16 @@ section#nutrition table td {
 
 section#nutrition table td:last-of-type {
     text-align: right;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

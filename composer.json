@@ -1,0 +1,17 @@
+{
+    "name": "benjaminfaulkner/festive",
+    "description": "A festive bake counter for Greggs",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Festive\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ben Faulkner",
+            "email": "ben@silvercomet.co.uk"
+        }
+    ],
+    "require": {}
+}
